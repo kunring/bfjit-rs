@@ -80,7 +80,8 @@ fn execute(mem_size: usize, code_input: &str) {
 fn main() {
     let usage = "Usage: `bfjit-rs [memory size in bytes] [code]`";
     let mut args = std::env::args().skip(1);
-    let mem_size = usize::from_str_radix(&args.next().expect(usage), 10).expect("unable to parse mem size");
+    let mem_size =
+        usize::from_str_radix(&args.next().expect(usage), 10).expect("unable to parse mem size");
     let code_input = &args.next().expect(usage);
     execute(mem_size, code_input);
 }
