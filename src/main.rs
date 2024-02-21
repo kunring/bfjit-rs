@@ -40,7 +40,7 @@ fn compile(intermediate: Vec<lexer::Token>) -> Vec<u8> {
                 code.extend_from_slice(asm::JNZ_INCOMPLETE);
                 let src_position = jz_backpatch_positions
                     .remove(&id)
-                    .expect("looppi päin persettä???");
+                    .expect("lexer should have caught unmatching parenthesis");
                 let distance_to_start: i32 = src_position as i32 - code.len() as i32;
                 let jump_amt_buf = distance_to_start.to_le_bytes();
                 code.extend_from_slice(&jump_amt_buf);
